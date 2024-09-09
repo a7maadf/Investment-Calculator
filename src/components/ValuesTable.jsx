@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { calculateInvestmentResults } from "../util/investment";
+import { formatter } from "../util/investment";
 
 export default function ValuesTable({
                                         initialInvestment,
@@ -34,10 +35,10 @@ export default function ValuesTable({
             {currentTableState.map((item, index) => (
                 <tr key={index}>
                     <td>{item.year}</td>
-                    <td>{item.valueEndOfYear}</td>
-                    <td>{item.interest}</td>
-                    <td>{item.totalInterest}</td>
-                    <td>{item.valueEndOfYear - item.interest}</td>
+                    <td>{formatter.format(item.valueEndOfYear)}</td>
+                    <td>{formatter.format(item.interest)}</td>
+                    <td>{formatter.format(item.totalInterest)}</td>
+                    <td>{formatter.format(item.valueEndOfYear - item.totalInterest)}</td>
                 </tr>
             ))}
             </tbody>
